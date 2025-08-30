@@ -36,7 +36,7 @@ def index():
         save_tasks(tasks)
         return redirect(url_for("index"))
     
-    # Pass enumerate explicitly to the template
+    # Pass enumerate explicitly to Jinja2 template
     return render_template_string(TEMPLATE, tasks=tasks, enumerate=enumerate)
 
 TEMPLATE = """<!DOCTYPE html>
@@ -93,6 +93,5 @@ li { display:flex; align-items:center; justify-content:space-between; padding:0.
 </html>"""
 
 if __name__ == "__main__":
-    # Render assigns a dynamic port, so we use PORT from env
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
